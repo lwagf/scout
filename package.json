@@ -1,0 +1,25 @@
+{
+  "name": "scout",
+  "version": "1.0.0",
+  "description": "This bot provides news articles every hour, and a card text search via the prefix `scout!`.",
+  "main": "index.js",
+  "dependencies": {
+    "discord.js": "^11.5.1",
+    "latest-tweets": "^1.0.4",
+    "node-schedule": "^1.3.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lwagf/scout.git"
+  },
+  "author": "lwagf",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lwagf/scout/issues"
+  },
+  "homepage": "https://github.com/lwagf/scout#readme"
+}
