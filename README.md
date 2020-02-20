@@ -20,3 +20,4 @@ Special thanks to:
 https://discordapp.com/oauth2/authorize?client_id=680181299616808994&permissions=52224&scope=bot
 
 Note inviting the public bot above won't provide the news functionality - it points to a news channel on my private server
+Please run the bot yourself for this feature
