@@ -1,12 +1,21 @@
 const axios = require('axios');
-module.exports = async (channelSent, cardTitle) => {
+module.exports = async (channelSent, cardTitle, searchModifier) => {
+
+    const paramsRequest = {
+        sort : 'id'
+    };
+
+    //Default to fuzzy search (fname), however use exact if specified
+    if (searchModifier === 'exact') {
+        paramsRequest.name = cardTitle;
+    } else {
+        paramsRequest.fname = cardTitle;
+    }
+
     const response = await axios({
         method : 'get',
         url : 'https://db.ygoprodeck.com/api/v6/cardinfo.php',
-        params : {
-            // We'll use the fuzzy search & take the top result
-            fname : cardTitle
-        },
+        params : paramsRequest,
         // Some non 200/300's are ok - see below
         validateStatus : undefined
     });

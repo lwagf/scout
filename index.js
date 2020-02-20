@@ -20,13 +20,15 @@ const discord = require('discord.js');
 const Client = new discord.Client();
 const moduleSchedule = require('./schedule.js');
 const moduleSearch = require('./search.js');
-const regexSearch = /scout!(.+)/;
+const regexSearch = /^scout!([^\/]+)(?:\/([^\/]+)+)*$/;
 
 Client.on('message', async (msg) => {
-    const cardTitle = (msg.content.match(regexSearch) || [])[1];
+    const match = msg.content.match(regexSearch) || [];
+    const cardTitle = match[1];
     if (cardTitle && !msg.author.bot){
+        const searchModifier = match[2];
         const channelSent = msg.channel;
-        return moduleSearch(channelSent, cardTitle).catch((error) => {
+        return moduleSearch(channelSent, cardTitle, searchModifier).catch((error) => {
             console.warn(`** Couldn't return data for '${cardTitle}' (${error.toString()}) **`);
             channelSent.send('An error occured');
         });
