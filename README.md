@@ -15,3 +15,8 @@ Special thanks to:
 
     If you ran `scout!stardust dragon`, due to the card id order this will actually return `Malefic Stardust Dragon` when you might be looking for `Stardust Dragon`.
     So instead, do `scout!stardust dragon/exact`
+
+### Example invite code
+https://discordapp.com/oauth2/authorize?client_id=680181299616808994&permissions=52224&scope=bot
+
+Note inviting the public bot above won't provide the news functionality - it points to a news channel on my private server
