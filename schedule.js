@@ -1,4 +1,4 @@
-const latestTweets = require('latest-tweets');
+const latestTweets = require('util').promisify(require('latest-tweets'));
 const nodeSchedule = require('node-schedule');
 
 module.exports = {
