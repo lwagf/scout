@@ -3,7 +3,7 @@
  *
  *  The bot has 2 main functions:
  *   -  Fetch news articles every 5th minute - schedule.js
- *   -  Provide a card text search - search.js
+ *   -  Provide a card name search - search.js
  */
 
 const _packageJson = require('./package.json');
