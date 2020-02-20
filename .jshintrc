@@ -1,0 +1,7 @@
+{
+    "node": true,
+    "esversion": 9,
+    "globals": {
+        "unescape": false
+    }
+}
