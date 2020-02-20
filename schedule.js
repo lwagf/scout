@@ -12,10 +12,10 @@ module.exports = {
                 return console.warn(`** Failed to retrieve tweets: ${error.toString()}`);
             }
             const tweetFirst = tweets[0];
-            if (tweetFirst.url != latestUrl){
+            if (tweetFirst.url != latestUrl) {
                 const content = tweetFirst.content;
                 //Filter out the irrelevant tweets
-                if (content.includes("[Today's Yu-Gi-Oh! OCG Card Intro") || content.includes("[Quiz for Everyone]")){
+                if (content.includes("[Today's Yu-Gi-Oh! OCG Card Intro") || content.includes("[Quiz for Everyone]")) {
                     return;
                 }
                 latestUrl = tweetFirst.url;
