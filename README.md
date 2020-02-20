@@ -4,7 +4,7 @@
 This bot provides news articles every 5th minute, and a card search by name via the prefix `scout!`.
 
 Special thanks to:
-* Twitter @ygorginization for news
+* Twitter @ygorganization for news
 * https://db.ygoprodeck.com/ for their card API
 
 ### Commands
