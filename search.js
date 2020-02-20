@@ -17,7 +17,7 @@ module.exports = async (channelSent, cardTitle, searchModifier) => {
         url : 'https://db.ygoprodeck.com/api/v6/cardinfo.php',
         params : paramsRequest,
         // Some non 200/300's are ok - see below
-        validateStatus : undefined
+        validateStatus : () => true
     });
     if (response.status === 400) {
         //This is usually just that the user's card wasn't found - would be silly to log all of these
