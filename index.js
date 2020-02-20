@@ -40,7 +40,12 @@ Client.on('ready', async () => {
     const user = Client.user;
     console.info(`Logged in as ${user.tag}!`);
     user.setActivity(`Serving YGO data on ${countServers} servers`);
-    moduleSchedule.start();
+    const channelNews = Client.channels.get(_config.channelNews);
+    if (channelNews) {
+        moduleSchedule.start(channelNews);
+    } else {
+        console.warn(`** Couldn't find channel ${_config.channelNews}`);
+    }
 });
 
 async function main() {
