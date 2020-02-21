@@ -79,7 +79,13 @@ module.exports = async (channelSent, cardTitle, searchModifier) => {
                 name : 'atk',
                 value: cardFirst.atk,
                 inline : true
-            },
+            }
+        );
+    }
+
+    if (cardFirst.def) {
+        //We cant do this above because of links duh!
+        fieldsEmbed.push(
             {
                 name : 'def',
                 value: cardFirst.def,
