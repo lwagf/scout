@@ -9,12 +9,12 @@ Special thanks to:
 
 ### Commands
 
-`scout!<card name>/<search modifier>` - Searches a card by name and returns an informative embed. This can take in 1 of the following modifiers:
+`scout!<card name>$<search modifier>` - Searches a card by name and returns an informative embed. This can take in 1 of the following modifiers:
 
 *   `exact` - Does the default fuzzy search not return the card you want? Use exact!
 
     If you ran `scout!stardust dragon`, due to the card id order this will actually return `Malefic Stardust Dragon` when you might be looking for `Stardust Dragon`.
-    So instead, do `scout!stardust dragon/exact`
+    So instead, do `scout!stardust dragon$exact`
 
 ### Example invite code
 https://discordapp.com/oauth2/authorize?client_id=680181299616808994&permissions=52224&scope=bot

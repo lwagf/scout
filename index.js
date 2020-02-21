@@ -21,13 +21,13 @@ const Client = new discord.Client();
 const moduleSchedule = require('./schedule.js');
 const moduleSearch = require('./search.js');
 /*
- *  This matches the scout! prefix, followed by card name, and optionally ended with /<modifier>
+ *  This matches the scout! prefix, followed by card name, and optionally ended with $<modifier>
  *
  *  sco!onuncu - Nothing happens
  *  scout!onuncu - Infernoid Onuncu is returned
- *  scout!onuncu/exact - The exact card name 'onuncu' is not found
+ *  scout!onuncu$exact - The exact card name 'onuncu' is not found
  */
-const regexSearch = /^scout!([^\/]+)(?:\/([^\/]+)+)*$/;
+const regexSearch = /^scout!([^\$]+)(?:\$([^\$]+)+)*$/;
 
 Client.on('message', async (msg) => {
     const match = msg.content.match(regexSearch) || [];
