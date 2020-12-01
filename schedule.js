@@ -1,26 +1,31 @@
-const latestTweets = require('util').promisify(require('latest-tweets'));
+const axios = require('axios');
+const cheerio = require('cheerio');
 const nodeSchedule = require('node-schedule');
 
 module.latestUrl = null;
 module.exports = {
     start : (channelNews) => {
         nodeSchedule.scheduleJob('*/5 * * * *', async () => {
-            let tweets;
+            let response;
             try {
-                tweets = await latestTweets('ygorganization');
+                response = await axios({
+                    method : 'get',
+                    url : 'https://ygorganization.com/'
+                });
             } catch (error) {
-                return console.warn(`** Failed to retrieve tweets: ${error.toString()}`);
+                return console.warn(`** Failed to GET ygorganization: ${error.toString()}`);
             }
-            const tweetFirst = tweets[0];
-            if (tweetFirst.url != module.latestUrl) {
-                const content = tweetFirst.content;
-                //Filter out the irrelevant tweets
-                if (content.includes("[Today's Yu-Gi-Oh! OCG Card Intro") || content.includes("[Quiz for Everyone]")) {
-                    return;
-                }
-                module.latestUrl = tweetFirst.url;
+            const $ = cheerio.load(response.data);
+            const latestUrl = $('div.article-container > article a.more-link').attr("href");
+
+            if (!latestUrl) {
+                return console.warn('** !latestUrl not found');
+            }
+
+            if (latestUrl != module.latestUrl) {
+                module.latestUrl = latestUrl;
                 //Post to discord channel
-                return channelNews.send(content);
+                return channelNews.send(latestUrl);
             }
         });
     }
