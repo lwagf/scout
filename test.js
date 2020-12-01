@@ -14,7 +14,7 @@ async function main() {
         return console.warn(`** Failed to GET ygorganization: ${error.toString()}`);
     }
     const $ = cheerio.load(response.data);
-    const latestUrl = $('div.article-container > article a.more-link').attr("href");
+    const latestUrl = $('div.article-container > article:not(.sticky) a.more-link').attr("href");
 
     if (!latestUrl) {
         return console.warn('** !latestUrl not found');
