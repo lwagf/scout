@@ -14,7 +14,7 @@ module.exports = async (channelSent, cardTitle, searchModifier) => {
 
     const response = await axios({
         method : 'get',
-        url : 'https://db.ygoprodeck.com/api/v6/cardinfo.php',
+        url : 'https://db.ygoprodeck.com/api/v7/cardinfo.php',
         params : paramsRequest,
         // Some non 200/300's are ok - see below
         validateStatus : () => true
@@ -26,7 +26,7 @@ module.exports = async (channelSent, cardTitle, searchModifier) => {
         //This is assuming we don't ever receive redirects
         throw `Non ok status ${response.status} - ${JSON.stringify(response.data)}`;
     }
-    const cardFirst = response.data[0];
+    const cardFirst = response.data.data[0];
     if (!cardFirst){
         //This should never happen!
         throw `No cardFirst for '${cardTitle}'`;
